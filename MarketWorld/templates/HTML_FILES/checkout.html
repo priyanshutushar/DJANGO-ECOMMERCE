@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title%} Checkout {% endblock title %}
+{% block main %}
+
+
+<h1> Payment </h1>
+<table class="table table-border">
+                <thead>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+                <th>Total</th>
+                </thead>
+                <tbody>
+                {% for cart in mycart%}
+                <tr>
+                    <td>{{cart.product_name}}</td>
+                    <td>{{cart.product_price}}</td>
+                    <td>{{cart.total}}</td>
+
+                    <td>{% widthratio cart.product_price 1 cart.total %}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+</table>
+<br>
+<form action="/cview/1/bill">
+    <pre>
+        <b> <font size = "5"> Card Number:- </b> </font> <input type="text" maxlength="11"/> <br>
+        <b> <font size = "5"> Exp Month:- </b> </font> <input type="text" maxlength="2" />   <b> <font size = "5"> Exp Year:- </b> </font> <input type="text" maxlength="4" /> <br>
+        <font size = "5"> <input type="submit" value="Pay!"> </font>
+    </pre>
+</form>
+{% endblock main %}

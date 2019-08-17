@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title%} Checkout {% endblock title %}
+{% block main %}
+
+
+<h1> <u> Billing Details </h1> </u>
+<h2> Your order is been placed !</h2>
+<table class="table table-border">
+                <thead>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+                <th>Total</th>
+                </thead>
+                <tbody>
+                {% for cart in mycart%}
+                <tr>
+                    <td>{{cart.product_name}}</td>
+                    <td>{{cart.product_price}}</td>
+                    <td>{{cart.total}}</td>
+
+                    <td>{% widthratio cart.product_price 1 cart.total %}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+</table>
+{% endblock main %}
